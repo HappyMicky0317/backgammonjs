@@ -1,0 +1,35 @@
+{
+  "name": "backgammon.js-client",
+  "version": "0.0.1",
+  "author": "quasoft <info@quasoft.net>",
+  "description": "Backgammon.js Client",
+  "license": "MIT",
+  "main": "index.html",
+  "dependencies": {
+    "browserify": "^13.0.1",
+    "socket.io-client": "^1.4.5",
+    "bower": "^1.7.9",
+    "popper.js": "^1.12.3",
+    "bootstrap": "~>4.3.1",
+    "clipboard": "^1.5.10",
+    "jquery": "^3.3.1",
+    "js-cookie": "^2.1.2"
+  },
+  "devDependencies": {
+    "watch": "^0.17.1",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build:js": "browserify ./js/main.js --require socket.io-client -o ./js/bundle.js",
+    "build": "npm run build:js",
+    "watch:js": "watchify ./js/main.js --require socket.io-client -o ./js/bundle.js -v",
+    "watch": "npm run watch:js",
+    "postinstall": "HOME=$OPENSHIFT_REPO_DIR bower install || bower install"
+  },
+  "browser": {
+    "jquery-fittext": "./bower_components/fittext/fittext.js"
+  },
+  "browserify": {
+    "transform": []
+  }
+}
